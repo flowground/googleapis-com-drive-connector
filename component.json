@@ -1,0 +1,713 @@
+{
+    "title": "Drive",
+    "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
+    "docsUrl": "https://developers.google.com/drive/",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/drive/v3/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://www.googleapis.com/drive/v3",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "Oauth2": {
+                "label": "Oauth 2.0 authentication",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "drive_about_get": {
+            "main": "./lib/actions/drive_about_get.js",
+            "title": "Gets information about the user, the user's Drive, and system capabilities.",
+            "description": "Gets information about the user, the user's Drive, and system capabilities.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_about_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_changes_list": {
+            "main": "./lib/actions/drive_changes_list.js",
+            "title": "Lists the changes for a user or Team Drive.",
+            "description": "Lists the changes for a user or Team Drive.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_changes_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_changes_getStartPageToken": {
+            "main": "./lib/actions/drive_changes_getStartPageToken.js",
+            "title": "Gets the starting pageToken for listing future changes.",
+            "description": "Gets the starting pageToken for listing future changes.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_changes_getStartPageToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_changes_watch": {
+            "main": "./lib/actions/drive_changes_watch.js",
+            "title": "Subscribes to changes for a user.",
+            "description": "Subscribes to changes for a user.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_changes_watch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_channels_stop": {
+            "main": "./lib/actions/drive_channels_stop.js",
+            "title": "Stop watching resources through this channel",
+            "description": "Stop watching resources through this channel",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_channels_stop.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_files_list": {
+            "main": "./lib/actions/drive_files_list.js",
+            "title": "Lists or searches files.",
+            "description": "Lists or searches files.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_files_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_files_create": {
+            "main": "./lib/actions/drive_files_create.js",
+            "title": "Creates a new file.",
+            "description": "Creates a new file.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_files_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_files_generateIds": {
+            "main": "./lib/actions/drive_files_generateIds.js",
+            "title": "Generates a set of file IDs which can be provided in create requests.",
+            "description": "Generates a set of file IDs which can be provided in create requests.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_files_generateIds.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_files_emptyTrash": {
+            "main": "./lib/actions/drive_files_emptyTrash.js",
+            "title": "Permanently deletes all of the user's trashed files.",
+            "description": "Permanently deletes all of the user's trashed files.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_files_emptyTrash.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_files_delete": {
+            "main": "./lib/actions/drive_files_delete.js",
+            "title": "Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to a Team Drive the user must be an organizer on the parent. If the target is a folder, all descendants owned by the user are also deleted.",
+            "description": "Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to a Team Drive the user must be an organizer on the parent. If the target is a folder, all descendants owned by the user are also deleted.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_files_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_files_get": {
+            "main": "./lib/actions/drive_files_get.js",
+            "title": "Gets a file's metadata or content by ID.",
+            "description": "Gets a file's metadata or content by ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_files_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_files_update": {
+            "main": "./lib/actions/drive_files_update.js",
+            "title": "Updates a file's metadata and/or content with patch semantics.",
+            "description": "Updates a file's metadata and/or content with patch semantics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_files_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_comments_list": {
+            "main": "./lib/actions/drive_comments_list.js",
+            "title": "Lists a file's comments.",
+            "description": "Lists a file's comments.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_comments_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_comments_create": {
+            "main": "./lib/actions/drive_comments_create.js",
+            "title": "Creates a new comment on a file.",
+            "description": "Creates a new comment on a file.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_comments_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_comments_delete": {
+            "main": "./lib/actions/drive_comments_delete.js",
+            "title": "Deletes a comment.",
+            "description": "Deletes a comment.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_comments_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_comments_get": {
+            "main": "./lib/actions/drive_comments_get.js",
+            "title": "Gets a comment by ID.",
+            "description": "Gets a comment by ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_comments_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_comments_update": {
+            "main": "./lib/actions/drive_comments_update.js",
+            "title": "Updates a comment with patch semantics.",
+            "description": "Updates a comment with patch semantics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_comments_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_replies_list": {
+            "main": "./lib/actions/drive_replies_list.js",
+            "title": "Lists a comment's replies.",
+            "description": "Lists a comment's replies.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_replies_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_replies_create": {
+            "main": "./lib/actions/drive_replies_create.js",
+            "title": "Creates a new reply to a comment.",
+            "description": "Creates a new reply to a comment.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_replies_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_replies_delete": {
+            "main": "./lib/actions/drive_replies_delete.js",
+            "title": "Deletes a reply.",
+            "description": "Deletes a reply.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_replies_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_replies_get": {
+            "main": "./lib/actions/drive_replies_get.js",
+            "title": "Gets a reply by ID.",
+            "description": "Gets a reply by ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_replies_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_replies_update": {
+            "main": "./lib/actions/drive_replies_update.js",
+            "title": "Updates a reply with patch semantics.",
+            "description": "Updates a reply with patch semantics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_replies_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_files_copy": {
+            "main": "./lib/actions/drive_files_copy.js",
+            "title": "Creates a copy of a file and applies any requested updates with patch semantics.",
+            "description": "Creates a copy of a file and applies any requested updates with patch semantics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_files_copy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_files_export": {
+            "main": "./lib/actions/drive_files_export.js",
+            "title": "Exports a Google Doc to the requested MIME type and returns the exported content. Please note that the exported content is limited to 10MB.",
+            "description": "Exports a Google Doc to the requested MIME type and returns the exported content. Please note that the exported content is limited to 10MB.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_files_export.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_permissions_list": {
+            "main": "./lib/actions/drive_permissions_list.js",
+            "title": "Lists a file's or Team Drive's permissions.",
+            "description": "Lists a file's or Team Drive's permissions.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_permissions_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_permissions_create": {
+            "main": "./lib/actions/drive_permissions_create.js",
+            "title": "Creates a permission for a file or Team Drive.",
+            "description": "Creates a permission for a file or Team Drive.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_permissions_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_permissions_delete": {
+            "main": "./lib/actions/drive_permissions_delete.js",
+            "title": "Deletes a permission.",
+            "description": "Deletes a permission.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_permissions_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_permissions_get": {
+            "main": "./lib/actions/drive_permissions_get.js",
+            "title": "Gets a permission by ID.",
+            "description": "Gets a permission by ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_permissions_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_permissions_update": {
+            "main": "./lib/actions/drive_permissions_update.js",
+            "title": "Updates a permission with patch semantics.",
+            "description": "Updates a permission with patch semantics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_permissions_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_revisions_list": {
+            "main": "./lib/actions/drive_revisions_list.js",
+            "title": "Lists a file's revisions.",
+            "description": "Lists a file's revisions.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_revisions_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_revisions_delete": {
+            "main": "./lib/actions/drive_revisions_delete.js",
+            "title": "Permanently deletes a file version. You can only delete revisions for files with binary content, like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining file version can't be deleted.",
+            "description": "Permanently deletes a file version. You can only delete revisions for files with binary content, like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining file version can't be deleted.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_revisions_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_revisions_get": {
+            "main": "./lib/actions/drive_revisions_get.js",
+            "title": "Gets a revision's metadata or content by ID.",
+            "description": "Gets a revision's metadata or content by ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_revisions_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_revisions_update": {
+            "main": "./lib/actions/drive_revisions_update.js",
+            "title": "Updates a revision with patch semantics.",
+            "description": "Updates a revision with patch semantics.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_revisions_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_files_watch": {
+            "main": "./lib/actions/drive_files_watch.js",
+            "title": "Subscribes to changes to a file",
+            "description": "Subscribes to changes to a file",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_files_watch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_teamdrives_list": {
+            "main": "./lib/actions/drive_teamdrives_list.js",
+            "title": "Lists the user's Team Drives.",
+            "description": "Lists the user's Team Drives.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_teamdrives_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_teamdrives_create": {
+            "main": "./lib/actions/drive_teamdrives_create.js",
+            "title": "Creates a new Team Drive.",
+            "description": "Creates a new Team Drive.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_teamdrives_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_teamdrives_delete": {
+            "main": "./lib/actions/drive_teamdrives_delete.js",
+            "title": "Permanently deletes a Team Drive for which the user is an organizer. The Team Drive cannot contain any untrashed items.",
+            "description": "Permanently deletes a Team Drive for which the user is an organizer. The Team Drive cannot contain any untrashed items.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_teamdrives_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_teamdrives_get": {
+            "main": "./lib/actions/drive_teamdrives_get.js",
+            "title": "Gets a Team Drive's metadata by ID.",
+            "description": "Gets a Team Drive's metadata by ID.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_teamdrives_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "drive_teamdrives_update": {
+            "main": "./lib/actions/drive_teamdrives_update.js",
+            "title": "Updates a Team Drive's metadata",
+            "description": "Updates a Team Drive's metadata",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/drive_teamdrives_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "type": "object",
+    "properties": {
+        "corpora": {
+            "type": "string"
+        },
+        "corpus": {
+            "type": "string",
+            "enum": [
+                "domain",
+                "user"
+            ]
+        },
+        "includeTeamDriveItems": {
+            "type": "boolean",
+            "default": false
+        },
+        "orderBy": {
+            "type": "string"
+        },
+        "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000,
+            "default": 100
+        },
+        "pageToken": {
+            "type": "string"
+        },
+        "q": {
+            "type": "string"
+        },
+        "spaces": {
+            "type": "string",
+            "default": "drive"
+        },
+        "supportsTeamDrives": {
+            "type": "boolean",
+            "default": false
+        },
+        "teamDriveId": {
+            "type": "string"
+        }
+    }
+}

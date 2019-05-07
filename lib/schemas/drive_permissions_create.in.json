@@ -1,0 +1,107 @@
+{
+    "type": "object",
+    "properties": {
+        "emailMessage": {
+            "type": "string"
+        },
+        "fileId": {
+            "required": true,
+            "type": "string"
+        },
+        "sendNotificationEmail": {
+            "type": "boolean"
+        },
+        "supportsTeamDrives": {
+            "type": "boolean",
+            "default": false
+        },
+        "transferOwnership": {
+            "type": "boolean",
+            "default": false
+        },
+        "useDomainAdminAccess": {
+            "type": "boolean",
+            "default": false
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "A permission for a file. A permission grants a user, group, domain or the world access to a file or a folder hierarchy.",
+            "properties": {
+                "allowFileDiscovery": {
+                    "description": "Whether the permission allows the file to be discovered through search. This is only applicable for permissions of type domain or anyone.",
+                    "type": "boolean"
+                },
+                "deleted": {
+                    "description": "Whether the account associated with this permission has been deleted. This field only pertains to user and group permissions.",
+                    "type": "boolean"
+                },
+                "displayName": {
+                    "description": "A displayable name for users, groups or domains.",
+                    "type": "string"
+                },
+                "domain": {
+                    "description": "The domain to which this permission refers.",
+                    "type": "string"
+                },
+                "emailAddress": {
+                    "description": "The email address of the user or group to which this permission refers.",
+                    "type": "string"
+                },
+                "expirationTime": {
+                    "description": "The time at which this permission will expire (RFC 3339 date-time). Expiration times have the following restrictions:  \n- They can only be set on user and group permissions \n- The time must be in the future \n- The time cannot be more than a year in the future",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The ID of this permission. This is a unique identifier for the grantee, and is published in User resources as permissionId.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "drive#permission",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"drive#permission\".",
+                    "type": "string"
+                },
+                "photoLink": {
+                    "description": "A link to the user's profile photo, if available.",
+                    "type": "string"
+                },
+                "role": {
+                    "description": "The role granted by this permission. While new values may be supported in the future, the following are currently allowed:  \n- owner \n- organizer \n- fileOrganizer \n- writer \n- commenter \n- reader",
+                    "type": "string"
+                },
+                "teamDrivePermissionDetails": {
+                    "description": "Details of whether the permissions on this Team Drive item are inherited or directly on this item. This is an output-only field which is present only for Team Drive items.",
+                    "items": {
+                        "properties": {
+                            "inherited": {
+                                "description": "Whether this permission is inherited. This field is always populated. This is an output-only field.",
+                                "type": "boolean"
+                            },
+                            "inheritedFrom": {
+                                "description": "The ID of the item from which this permission is inherited. This is an output-only field and is only populated for members of the Team Drive.",
+                                "type": "string"
+                            },
+                            "role": {
+                                "description": "The primary role for this user. While new values may be added in the future, the following are currently possible:  \n- organizer \n- fileOrganizer \n- writer \n- commenter \n- reader",
+                                "type": "string"
+                            },
+                            "teamDrivePermissionType": {
+                                "description": "The Team Drive permission type for this user. While new values may be added in future, the following are currently possible:  \n- file \n- member",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "type": {
+                    "description": "The type of the grantee. Valid values are:  \n- user \n- group \n- domain \n- anyone",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

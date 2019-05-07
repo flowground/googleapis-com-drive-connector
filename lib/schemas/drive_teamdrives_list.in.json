@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+        "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 10
+        },
+        "pageToken": {
+            "type": "string"
+        },
+        "q": {
+            "type": "string"
+        },
+        "useDomainAdminAccess": {
+            "type": "boolean",
+            "default": false
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        }
+    }
+}

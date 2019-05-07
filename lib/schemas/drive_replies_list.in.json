@@ -1,0 +1,32 @@
+{
+    "type": "object",
+    "properties": {
+        "commentId": {
+            "required": true,
+            "type": "string"
+        },
+        "fileId": {
+            "required": true,
+            "type": "string"
+        },
+        "includeDeleted": {
+            "type": "boolean",
+            "default": false
+        },
+        "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 20
+        },
+        "pageToken": {
+            "type": "string"
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        }
+    }
+}

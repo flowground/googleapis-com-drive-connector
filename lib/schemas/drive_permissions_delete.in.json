@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+        "fileId": {
+            "required": true,
+            "type": "string"
+        },
+        "permissionId": {
+            "required": true,
+            "type": "string"
+        },
+        "supportsTeamDrives": {
+            "type": "boolean",
+            "default": false
+        },
+        "useDomainAdminAccess": {
+            "type": "boolean",
+            "default": false
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,121 @@
+{
+    "type": "object",
+    "properties": {
+        "fileId": {
+            "required": true,
+            "type": "string"
+        },
+        "revisionId": {
+            "required": true,
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The metadata for a revision to a file.",
+            "properties": {
+                "exportLinks": {
+                    "additionalProperties": {
+                        "description": "A mapping from export format to URL",
+                        "type": "string"
+                    },
+                    "description": "Links for exporting Google Docs to specific formats.",
+                    "type": "object"
+                },
+                "id": {
+                    "description": "The ID of the revision.",
+                    "type": "string"
+                },
+                "keepForever": {
+                    "description": "Whether to keep this revision forever, even if it is no longer the head revision. If not set, the revision will be automatically purged 30 days after newer content is uploaded. This can be set on a maximum of 200 revisions for a file.\nThis field is only applicable to files with binary content in Drive.",
+                    "type": "boolean"
+                },
+                "kind": {
+                    "default": "drive#revision",
+                    "description": "Identifies what kind of resource this is. Value: the fixed string \"drive#revision\".",
+                    "type": "string"
+                },
+                "lastModifyingUser": {
+                    "description": "The last user to modify this revision.",
+                    "properties": {
+                        "displayName": {
+                            "description": "A plain text displayable name for this user.",
+                            "type": "string"
+                        },
+                        "emailAddress": {
+                            "description": "The email address of the user. This may not be present in certain contexts if the user has not made their email address visible to the requester.",
+                            "type": "string"
+                        },
+                        "kind": {
+                            "default": "drive#user",
+                            "description": "Identifies what kind of resource this is. Value: the fixed string \"drive#user\".",
+                            "type": "string"
+                        },
+                        "me": {
+                            "description": "Whether this user is the requesting user.",
+                            "type": "boolean"
+                        },
+                        "permissionId": {
+                            "description": "The user's ID as visible in Permission resources.",
+                            "type": "string"
+                        },
+                        "photoLink": {
+                            "description": "A link to the user's profile photo, if available.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "md5Checksum": {
+                    "description": "The MD5 checksum of the revision's content. This is only applicable to files with binary content in Drive.",
+                    "type": "string"
+                },
+                "mimeType": {
+                    "description": "The MIME type of the revision.",
+                    "type": "string"
+                },
+                "modifiedTime": {
+                    "description": "The last time the revision was modified (RFC 3339 date-time).",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "originalFilename": {
+                    "description": "The original filename used to create this revision. This is only applicable to files with binary content in Drive.",
+                    "type": "string"
+                },
+                "publishAuto": {
+                    "description": "Whether subsequent revisions will be automatically republished. This is only applicable to Google Docs.",
+                    "type": "boolean"
+                },
+                "published": {
+                    "description": "Whether this revision is published. This is only applicable to Google Docs.",
+                    "type": "boolean"
+                },
+                "publishedOutsideDomain": {
+                    "description": "Whether this revision is published outside the domain. This is only applicable to Google Docs.",
+                    "type": "boolean"
+                },
+                "size": {
+                    "description": "The size of the revision's content in bytes. This is only applicable to files with binary content in Drive.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

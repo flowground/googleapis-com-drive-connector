@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+        "fileId": {
+            "required": true,
+            "type": "string"
+        },
+        "includeDeleted": {
+            "type": "boolean",
+            "default": false
+        },
+        "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 20
+        },
+        "pageToken": {
+            "type": "string"
+        },
+        "startModifiedTime": {
+            "type": "string"
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        }
+    }
+}

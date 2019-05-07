@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+        "commentId": {
+            "required": true,
+            "type": "string"
+        },
+        "fileId": {
+            "required": true,
+            "type": "string"
+        },
+        "includeDeleted": {
+            "type": "boolean",
+            "default": false
+        },
+        "replyId": {
+            "required": true,
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        }
+    }
+}
